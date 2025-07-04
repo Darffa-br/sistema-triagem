@@ -1,0 +1,38 @@
+### Verificar se o sistema está no ar
+GET http://localhost:8080/health
+Accept: application/json
+
+### Cadastrar novo paciente (triagem)
+POST http://localhost:8080/triagem
+Content-Type: application/json
+
+{
+  "nome": "Maria Silva",
+  "idade": 45,
+  "sintomas": "Dor no peito e falta de ar",
+  "prioridade": "VERMELHA",
+  "gravidade": "GRAVE"
+}
+
+### Cadastrar novo médico
+POST http://localhost:8080/medicos
+Content-Type: application/json
+
+{
+  "nome": "Dr. João Oliveira",
+  "especialidade": "Clínico Geral",
+  "crm": "123456-SP",
+  "emPlantao": true
+}
+
+### Atualizar status de plantão do médico (ex: ID = 1)
+PUT http://localhost:8080/medicos/1/plantao?emPlantao=false
+Accept: application/json
+
+### Buscar paciente por ID
+GET http://localhost:8080/pacientes/1
+Accept: application/json
+
+### Buscar próximo paciente a ser atendido
+GET http://localhost:8080/atendimento/proximo
+Accept: application/json
